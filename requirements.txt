@@ -6,7 +6,8 @@ xmltodict
 gitpython
 rosinstall_generator
 rosdistro
-requests
+requests==2.28.1
+urllib3==1.26.12
 rosdep
 pep8
 docker

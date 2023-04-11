@@ -62,6 +62,11 @@ def get_parser(
             help='generate only the specified packages'
         )
         parser.add_argument(
+            '--input-repos',
+            nargs='+',
+            help='generate only the specified repos'
+        )
+        parser.add_argument(
             '--pr-comment',
             help='comment to add to the PR',
             type=str
