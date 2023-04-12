@@ -3,6 +3,10 @@ repositories:
     type: git
     url: https://github.com/ament/ament_cmake.git
     version: 1.1.4
+  ament/ament_index:
+    type: git
+    url: https://github.com/ament/ament_index.git
+    version: 1.2.0
   ament/ament_lint:
     type: git
     url: https://github.com/ament/ament_lint.git

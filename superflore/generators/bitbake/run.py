@@ -58,6 +58,7 @@ def main():
     ######################
     if args.input_repos:
         import yaml
+        distro = get_distro(args.ros_distro)
         file_paths = args.input_repos
         repos = []
         for file_path in file_paths:
@@ -65,11 +66,15 @@ def main():
                 repos_data = yaml.safe_load(f)
                 warn(f"Use input repos file {repos_data}")
                 repos =[v['url'].split('/')[-1].split('.')[0] for k,v in repos_data['repositories'].items()]
-                warn(f"--only add paras {' '.join(repos)}")
-                if args.only:
-                    args.only.extend(repos)
-                else:
-                    args.only = repos    
+                warn(f"--only add repos {' '.join(repos)}")
+                for repo in repos:
+                    pkg_names = distro.repositories[repo].release_repository.package_names
+                    warn(f"--only add paras {' '.join(pkg_names)}")    
+                    if args.only:
+                        args.only.extend(pkg_names)
+                    else:
+                        args.only = pkg_names    
+        args.only = list(set(args.only))
     ######################
 
     if args.pr_only:
